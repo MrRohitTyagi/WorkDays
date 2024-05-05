@@ -1,7 +1,7 @@
 
 ## About The Project
 
-THis project is a simple user interface with a sleek design featuring a prominent search bar equipped with advanced filters for tailored results. Ensure compatibility across devices with a responsive layout. Present job listings clearly, highlighting key details for easy comparison
+This project is a simple user interface with a sleek design featuring a prominent search bar equipped with advanced filters for tailored results. Ensure compatibility across devices with a responsive layout. Present job listings clearly, highlighting key details for easy comparison
 
 ## Run Locally
 
@@ -26,7 +26,7 @@ Install dependencies
 Start the server
 
 ```bash
-  npm run start
+  npm run dev
 ```
 
 
