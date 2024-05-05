@@ -1,7 +1,7 @@
 import { Box, InputBase } from "@mui/material";
 import SelectComp from "@/components/core/Select/index.jsx";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   JobTypeOptions,
   NumberOfEmployeesOptions,
@@ -33,6 +33,7 @@ const FilterSection = () => {
   const [techStack, setTechStack] = useState([]);
   const [basePay, setBasePay] = useState("");
   const [companyName, setCompanyName] = useState("");
+  const timeoutRef = useRef();
 
   const dispatch = useDispatch();
   const { queryParams, updateQueryParams } = useParamsState();
@@ -57,8 +58,12 @@ const FilterSection = () => {
 
   const handleQueryParams = useCallback(
     (key, value) => {
-      updateQueryParams(key, encodeURIComponent(value));
-      dispatch(updateListing());
+      clearTimeout(timeoutRef.current);
+      // debouncing
+      timeoutRef.current = setTimeout(() => {
+        updateQueryParams(key, encodeURIComponent(value));
+        dispatch(updateListing());
+      }, 400);
     },
     [dispatch, updateQueryParams]
   );
