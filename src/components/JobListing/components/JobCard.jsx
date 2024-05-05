@@ -12,6 +12,7 @@ import Gap from "@/components/core/Gap/index.jsx";
 import Job from "@/entities/jobEntity";
 
 import "./jobCard.css";
+import SimpleDialogComp from "../../core/Dialog";
 
 function JobCard({ job = new Job() }) {
   const isSalaryRangeProvided = job.maxSalary && job.minSalary;
@@ -95,16 +96,20 @@ function JobCard({ job = new Job() }) {
             >
               {job.description}
             </Box>
-            <Typography
-              align="center"
-              color="#4943da"
-              sx={{ fontWeight: 300, cursor: "pointer" }}
-              variant="h5"
-              component="div"
-              fontSize={"14px"}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "center",
+              }}
             >
-              Show more
-            </Typography>
+              <SimpleDialogComp
+                triggerTitle="Show More"
+                title="Job Description"
+                content={job.description}
+              />
+            </Box>
+
             <Gap height="25px" />
             <Typography
               sx={{ opacity: 0.7, fontWeight: 600, letterSpacing: "1px" }}

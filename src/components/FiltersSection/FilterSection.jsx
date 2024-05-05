@@ -186,6 +186,7 @@ const FilterSection = () => {
           "& > input": { paddingTop: "2px" },
           border: "1px solid hsl(0, 0%, 80%)",
           padding: "4px",
+          height: "38px",
           borderRadius: "4px",
         }}
         id="search-company-name"
