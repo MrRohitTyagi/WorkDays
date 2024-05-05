@@ -1,4 +1,4 @@
-import { Grid, InputBase } from "@mui/material";
+import { Box, InputBase } from "@mui/material";
 import SelectComp from "@/components/core/Select/index.jsx";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -10,7 +10,7 @@ import {
   roleOptions,
   techStackoptions,
 } from "@/constants/filterConstants";
-import useParamsState from "../../hooks/useParamsState";
+import useParamsState from "@/hooks/useParamsState";
 import {
   basePayQueryKey,
   companyNameQueryKey,
@@ -19,9 +19,11 @@ import {
   numberofEmpQueryKey,
   rolesQueryKey,
   techStackQueryKey,
-} from "../../constants/filterConstants";
+} from "@/constants/filterConstants";
 import { useDispatch } from "react-redux";
-import { updateListing } from "../../redux/slices/jobSlice";
+import { updateListing } from "@/redux/slices/jobSlice";
+
+import "./filterSection.css";
 
 const FilterSection = () => {
   const [role, setRoles] = useState([]);
@@ -111,97 +113,90 @@ const FilterSection = () => {
   }, []);
 
   return (
-    <Grid container spacing={2} direction="row" justifyContent="start">
+    <Box className="filter-container">
       {/* Roles Select*/}
-      <Grid item minWidth={200}>
-        <SelectComp
-          explicitOptions={explicitOptions}
-          name="roles"
-          placeholder="Roles"
-          isMulti={true}
-          onChange={handleRoleChange}
-          options={roleOptions}
-          value={role}
-        />
-      </Grid>
+
+      <SelectComp
+        explicitOptions={explicitOptions}
+        name="roles"
+        placeholder="Roles"
+        isMulti={true}
+        onChange={handleRoleChange}
+        options={roleOptions}
+        value={role}
+      />
 
       {/* No of employees Select*/}
-      <Grid item minWidth={200}>
-        <SelectComp
-          name="Number Of Employees"
-          placeholder="Number Of Employees"
-          onChange={handleNumberOfEmpOnchange}
-          options={NumberOfEmployeesOptions}
-          value={numberOfEmp}
-        />
-      </Grid>
+
+      <SelectComp
+        name="Number Of Employees"
+        placeholder="Number Of Employees"
+        onChange={handleNumberOfEmpOnchange}
+        options={NumberOfEmployeesOptions}
+        value={numberOfEmp}
+      />
 
       {/* Experience Select*/}
-      <Grid item xs={1} minWidth={200}>
-        <SelectComp
-          placeholder="Min Experience"
-          name="min-experience"
-          onChange={handleExperienceOnchange}
-          options={experienceOptions}
-          value={experience}
-        />
-      </Grid>
+
+      <SelectComp
+        placeholder="Min Experience"
+        name="min-experience"
+        onChange={handleExperienceOnchange}
+        options={experienceOptions}
+        value={experience}
+      />
 
       {/* Job Type Select*/}
-      <Grid item minWidth={200}>
-        <SelectComp
-          placeholder="Remote"
-          name="remote"
-          onChange={handleJobTypeOnchange}
-          options={JobTypeOptions}
-          value={jobType}
-        />
-      </Grid>
+
+      <SelectComp
+        placeholder="Remote"
+        name="remote"
+        onChange={handleJobTypeOnchange}
+        options={JobTypeOptions}
+        value={jobType}
+      />
 
       {/* Tech Stack Select*/}
-      <Grid item minWidth={200}>
-        <SelectComp
-          placeholder="Tech Stack "
-          name="tech-stack "
-          isMulti={true}
-          onChange={handleTechStackOnchange}
-          options={techStackoptions}
-          value={techStack}
-        />
-      </Grid>
+
+      <SelectComp
+        placeholder="Tech Stack "
+        name="tech-stack "
+        isMulti={true}
+        onChange={handleTechStackOnchange}
+        options={techStackoptions}
+        value={techStack}
+      />
 
       {/* Minimum base pay salary  Select*/}
-      <Grid item minWidth={200}>
-        <SelectComp
-          name="minimum-base-pay-salary"
-          placeholder="Minimum Salary"
-          onChange={handleBasePayOnchange}
-          options={basePayOptions}
-          value={basePay}
-        />
-      </Grid>
+
+      <SelectComp
+        name="minimum-base-pay-salary"
+        placeholder="Minimum Salary"
+        onChange={handleBasePayOnchange}
+        options={basePayOptions}
+        value={basePay}
+      />
 
       {/* Search company Name  Select*/}
-      <Grid item minWidth={200}>
-        <InputBase
-          size="small"
-          sx={{
-            "::placeholder": { fontSize: "12px" },
-            "& > input": { paddingTop: "2px" },
-            border: "1px solid hsl(0, 0%, 80%)",
-            padding: "4px",
-            borderRadius: "4px",
-          }}
-          id="search-company-name"
-          label="Search company Name"
-          variant="outlined"
-          value={companyName}
-          onChange={handleCompanyNameOnchange}
-          placeholder="Search company Name"
-          name="Search company Name"
-        />
-      </Grid>
-    </Grid>
+
+      <InputBase
+        size="small"
+        sx={{
+          "::placeholder": { fontSize: "12px" },
+          "& > input": { paddingTop: "2px" },
+          border: "1px solid hsl(0, 0%, 80%)",
+          padding: "4px",
+          borderRadius: "4px",
+        }}
+        id="search-company-name"
+        label="Search company Name"
+        variant="outlined"
+        value={companyName}
+        onChange={handleCompanyNameOnchange}
+        placeholder="Search company Name"
+        name="Search company Name"
+      />
+    </Box>
   );
 };
 
