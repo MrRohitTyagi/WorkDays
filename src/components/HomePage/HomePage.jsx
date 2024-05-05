@@ -1,4 +1,4 @@
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 
 import FilterSection from "../FiltersSection/FilterSection";
 import JobListing from "../JobListing/JobListing";
@@ -14,6 +14,7 @@ const HomePage = () => {
       {isLoading ? (
         <Box className="full-screen-loader">
           <CircularProgress />
+          <Typography>Hold Tight We&apos;re Loading</Typography>
         </Box>
       ) : (
         <>

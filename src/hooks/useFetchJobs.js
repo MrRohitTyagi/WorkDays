@@ -11,15 +11,18 @@ const useFetchJobs = () => {
 
   const infiriteScrollTracker = useRef({ offset: 0 });
 
-  const fetchJobList = useCallback(async () => {
-    setIsLoading(true);
-    const res = await fetchJobs({
-      limit: baseJobFetchLimit,
-      offset: infiriteScrollTracker.current.offset,
-    });
-    dispatch(jobsReducer(res));
-    setIsLoading(false);
-  }, [dispatch]);
+  const fetchJobList = useCallback(
+    async (setLoading = true) => {
+      if (setLoading) setIsLoading(true);
+      const res = await fetchJobs({
+        limit: baseJobFetchLimit,
+        offset: infiriteScrollTracker.current.offset,
+      });
+      dispatch(jobsReducer(res));
+      if (setLoading) setIsLoading(false);
+    },
+    [dispatch]
+  );
 
   useEffect(() => {
     fetchJobList();
@@ -29,7 +32,7 @@ const useFetchJobs = () => {
     infiriteScrollTracker.current = {
       offset: infiriteScrollTracker.current.offset + baseJobFetchLimit,
     };
-    fetchJobList();
+    fetchJobList(false);
   };
 
   return {
