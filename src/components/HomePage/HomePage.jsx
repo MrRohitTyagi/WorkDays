@@ -1,5 +1,7 @@
+// MUI Imports
 import { Box, CircularProgress, Typography } from "@mui/material";
 
+// Other Imports
 import FilterSection from "../FiltersSection/FilterSection";
 import JobListing from "../JobListing/JobListing";
 import useFetchJobs from "@/hooks/useFetchJobs";

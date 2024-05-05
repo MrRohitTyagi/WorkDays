@@ -1,7 +1,12 @@
-import { Box, InputBase } from "@mui/material";
-import SelectComp from "@/components/core/Select/index.jsx";
-
+// Library Imports
+import { useDispatch } from "react-redux";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+
+// MUI Imports
+import { Box, InputBase } from "@mui/material";
+
+// Other Imports
+import SelectComp from "@/components/core/Select/index.jsx";
 import {
   JobTypeOptions,
   NumberOfEmployeesOptions,
@@ -20,7 +25,6 @@ import {
   rolesQueryKey,
   techStackQueryKey,
 } from "@/constants/filterConstants";
-import { useDispatch } from "react-redux";
 import { updateListing } from "@/redux/slices/jobSlice";
 
 import "./filterSection.css";

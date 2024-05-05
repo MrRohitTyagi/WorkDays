@@ -17,11 +17,6 @@ function filterJobs(jobs = [new Job()]) {
     role = "",
     location = "",
   } = getAllQueryParamsObject() || {};
-  console.log(
-    `%c {companyName, minSalary, minExp, role, location} `,
-    "color: orange;border:2px solid cyan",
-    { companyName, minSalary, minExp, role, location }
-  );
 
   for (const job of jobs) {
     // minimum experiencs filter
@@ -77,7 +72,6 @@ const jobReducer = createSlice({
       state.all = [...state.value, ...action.payload];
     },
     updateListing: (state) => {
-      console.log("IN UPDATE JOBS", ",IN UPDATE JOBS");
       state.value = filterJobs([...state.all]);
     },
   },

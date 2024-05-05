@@ -5,14 +5,13 @@ import PropTypes from "prop-types";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import SimpleDialogComp from "@/components/core/Dialog";
 import { Box, Button, CardActions, Tooltip } from "@mui/material";
 
 // Other Imports
 import Gap from "@/components/core/Gap/index.jsx";
 import Job from "@/entities/jobEntity";
-
 import "./jobCard.css";
-import SimpleDialogComp from "../../core/Dialog";
 
 function JobCard({ job = new Job() }) {
   const isSalaryRangeProvided = job.maxSalary && job.minSalary;

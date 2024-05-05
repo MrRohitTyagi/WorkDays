@@ -1,10 +1,12 @@
+// Library Imports
 import InfiniteScroll from "react-infinite-scroll-component";
 import PropTypes from "prop-types";
 
-import JobCard from "./components/JobCard";
-
-import "./JobListing.css";
+// MUI Imports
 import { Box, CircularProgress } from "@mui/material";
+
+import JobCard from "./components/JobCard";
+import "./JobListing.css";
 
 const JobListing = ({ fetchMore, jobList }) => {
   return (
@@ -12,13 +14,11 @@ const JobListing = ({ fetchMore, jobList }) => {
       className="job-listing-container"
       dataLength={jobList.length} //This is important field to render the next data
       next={fetchMore}
-      hasMore={jobList.length === 0}
+      hasMore={jobList.length !== 0}
       loader={
-        jobList.length !== 0 && (
-          <Box className="center" style={{ textAlign: "center" }}>
-            <CircularProgress size="16px" /> {" Loading..."}
-          </Box>
-        )
+        <Box className="center" style={{ textAlign: "center" }}>
+          <CircularProgress size="22px" /> {" Loading..."}
+        </Box>
       }
     >
       {jobList.length === 0 ? (
