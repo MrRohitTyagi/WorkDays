@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 // MUI Imports
-import { Box, InputBase } from "@mui/material";
+import { Box, InputBase, Typography } from "@mui/material";
 
 // Other Imports
 import SelectComp from "@/components/core/Select/index.jsx";
@@ -129,6 +129,7 @@ const FilterSection = () => {
         explicitOptions={explicitOptions}
         name="roles"
         placeholder="Roles"
+        title="Roles"
         isMulti={true}
         onChange={handleRoleChange}
         options={roleOptions}
@@ -140,6 +141,7 @@ const FilterSection = () => {
       <SelectComp
         name="Number Of Employees"
         placeholder="Number Of Employees"
+        title="Number Of Employees"
         onChange={handleNumberOfEmpOnchange}
         options={NumberOfEmployeesOptions}
         value={numberOfEmp}
@@ -149,6 +151,7 @@ const FilterSection = () => {
 
       <SelectComp
         placeholder="Min Experience"
+        title="Min Experience"
         name="min-experience"
         onChange={handleExperienceOnchange}
         options={experienceOptions}
@@ -159,6 +162,7 @@ const FilterSection = () => {
 
       <SelectComp
         placeholder="Remote"
+        title="Remote"
         name="remote"
         onChange={handleJobTypeOnchange}
         options={JobTypeOptions}
@@ -168,7 +172,8 @@ const FilterSection = () => {
       {/* Tech Stack Select*/}
 
       <SelectComp
-        placeholder="Tech Stack "
+        placeholder="Tech Stack"
+        title="Tech Stack"
         name="tech-stack "
         isMulti={true}
         onChange={handleTechStackOnchange}
@@ -181,31 +186,39 @@ const FilterSection = () => {
       <SelectComp
         name="minimum-base-pay-salary"
         placeholder="Minimum Salary"
+        title="Minimum Salary"
         onChange={handleBasePayOnchange}
         options={basePayOptions}
         value={basePay}
       />
 
       {/* Search company Name  Select*/}
-
-      <InputBase
-        size="small"
-        sx={{
-          "::placeholder": { fontSize: "12px" },
-          "& > input": { paddingTop: "2px" },
-          border: "1px solid hsl(0, 0%, 80%)",
-          padding: "4px",
-          height: "38px",
-          borderRadius: "4px",
-        }}
-        id="search-company-name"
-        label="Search company Name"
-        variant="outlined"
-        value={companyName}
-        onChange={handleCompanyNameOnchange}
-        placeholder="Search company Name"
-        name="Search company Name"
-      />
+      <Box sx={{ position: "relative" }}>
+        {companyName.length > 0 && (
+          <Typography className="animated-field-label">
+            Search company Name
+          </Typography>
+        )}
+        <InputBase
+          size="small"
+          sx={{
+            "::placeholder": { fontSize: "12px" },
+            "& > input": { paddingTop: "2px" },
+            border: "1px solid hsl(0, 0%, 80%)",
+            padding: "4px",
+            height: "38px",
+            borderRadius: "4px",
+            width: "100%",
+          }}
+          id="search-company-name"
+          label="Search company Name"
+          variant="outlined"
+          value={companyName}
+          onChange={handleCompanyNameOnchange}
+          placeholder="Search company Name"
+          name="Search company Name"
+        />
+      </Box>
     </Box>
   );
 };

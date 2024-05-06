@@ -51,5 +51,5 @@ https://work-days-rho.vercel.app/
 
 ![App Screenshot](https://res.cloudinary.com/derplm8c6/image/upload/v1714914486/d8qjdcwirapcfog5xwnm.png)
 -------------------------------------------------------------------------------------------
-![App Screenshot](https://res.cloudinary.com/derplm8c6/image/upload/v1714914533/blziu912khyn3ocwmg71.png)
+![App Screenshot](https://res.cloudinary.com/derplm8c6/image/upload/v1714970100/sgaw6vzs5k8kldd3w1wy.png)
 

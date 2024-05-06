@@ -4,7 +4,7 @@ import Select from "react-select";
 import { useMemo } from "react";
 
 // MUI Imports
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const customStyles = {
   // Style the placeholder text
@@ -26,6 +26,7 @@ const SelectComp = ({
   valueKey = "value",
   explicitOptions,
   name,
+  title,
   optionStyles,
 }) => {
   const onchangeWrapper = (value) => {
@@ -47,39 +48,45 @@ const SelectComp = ({
   }, [explicitOptions, isMulti, options, value, valueKey]);
 
   return (
-    <Select
-      name={name}
-      styles={customStyles}
-      isClearable
-      menuPortalTarget={document.body}
-      placeholder={placeholder}
-      isMulti={isMulti}
-      value={selectValue}
-      getOptionLabel={(option) => {
-        return (
-          <Typography
-            sx={{
-              opacity: 0.7,
-              fontWeight: 500,
-              letterSpacing: "1px",
-              ...optionStyles,
-            }}
-            fontSize={"13px"}
-            variant="h5"
-            component="div"
-          >
-            {option.label}
-          </Typography>
-        );
-      }}
-      onChange={onchangeWrapper}
-      options={options}
-    />
+    <Box sx={{ position: "relative" }}>
+      {value?.length > 0 && (
+        <Typography className="animated-field-label">{title}</Typography>
+      )}
+      <Select
+        name={name}
+        styles={customStyles}
+        isClearable
+        menuPortalTarget={document.body}
+        placeholder={placeholder}
+        isMulti={isMulti}
+        value={selectValue}
+        getOptionLabel={(option) => {
+          return (
+            <Typography
+              sx={{
+                opacity: 0.7,
+                fontWeight: 500,
+                letterSpacing: "1px",
+                ...optionStyles,
+              }}
+              fontSize={"13px"}
+              variant="h5"
+              component="div"
+            >
+              {option.label}
+            </Typography>
+          );
+        }}
+        onChange={onchangeWrapper}
+        options={options}
+      />
+    </Box>
   );
 };
 SelectComp.propTypes = {
   options: PropTypes.array,
   placeholder: PropTypes.string,
+  title: PropTypes.string,
   labelKey: PropTypes.string,
   optionStyles: PropTypes.object,
   name: PropTypes.string,
