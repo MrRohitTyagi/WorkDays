@@ -11,6 +11,7 @@ const useFetchJobs = () => {
 
   const infiriteScrollTracker = useRef({ offset: 0 });
 
+  //Fetch the jobs initially
   const fetchJobList = useCallback(
     async (setLoading = true) => {
       if (setLoading) setIsLoading(true);
@@ -28,6 +29,7 @@ const useFetchJobs = () => {
     fetchJobList();
   }, [fetchJobList]);
 
+  // fetch more jobs and increase he offset value
   const fetchMore = () => {
     infiriteScrollTracker.current = {
       offset: infiriteScrollTracker.current.offset + baseJobFetchLimit,

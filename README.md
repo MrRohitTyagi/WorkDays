@@ -39,7 +39,7 @@ Start the server
 
 ## Tech Stack
 
-**Client:** React, Redux, HTML, CSS, Material UI
+React, Redux, HTML, CSS, Material UI
 
 
 ## Live Demo
